@@ -4,7 +4,6 @@
 [Prerequisites](#prerequisites)
 
 [Setup](#setup)
-===================================
 
 
 <a name="prerequisites"/>
