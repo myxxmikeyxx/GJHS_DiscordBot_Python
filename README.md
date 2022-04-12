@@ -1,13 +1,22 @@
 # GJHS_DiscordBot_Python
 
-#### Table of Contents  
-[Prerequisites](#prerequisites)
+Table of contents
+=================
+<!--ts-->
+   * [Prerequisites](#prerequisites)
+<!--       * [Clasp](#clasp)
+      * [Copy](#copy) -->
+   * [Setup](#setup)
+<!--    * [Resources](#resources)
+     * [Andrew Stillman](#andrew-stillman)
+     * [mhawksey](#mhawksey)
+     * [Adam L](#adam-l)
+   * [Troubleshooting](#troubleshooting)
+     * [PowerShell](#powershell) -->
+<!--te-->
 
-[Setup](#setup)
-
-
-<a name="prerequisites"/>
-### Prerequisites
+Prerequisites
+-----
 
 Before you start you need to have a [discord devloper account](https://discord.com/developers/applications).
 You can start [here](https://www.digitaltrends.com/gaming/how-to-make-a-discord-bot/) for setting up a discord devloper account.
@@ -19,8 +28,8 @@ Next use pip3 to install discord.py. Install docs [here](https://discordpy.readt
 
 
 
-<a name="setup"/>
-### Setup
+Setup
+-----
 
 Start the bot by going into the folder where the file is located.
 Start the bot. Example: `pyhton3 ./boy.py` 
