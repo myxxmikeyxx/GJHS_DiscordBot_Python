@@ -1,0 +1,39 @@
+https://soyokaze.medium.com/build-a-discord-bot-in-node-or-python-3a4028099657
+https://stackoverflow.com/questions/57212859/how-to-align-fields-in-discord-py-embedded-messages
+https://stackoverflow.com/questions/43752962/how-to-iterate-through-a-nested-dict
+https://www.delftstack.com/howto/python/get-first-key-in-dictionary-python/#:~:text=By%20the%20first%20key%2C%20we,key%20using%20the%20next%20function.
+https://www.reddit.com/r/Discord_Bots/comments/ljeuz0/how_to_get_member_object_from_id_discordpy/
+https://stackoverflow.com/questions/57212859/how-to-align-fields-in-discord-py-embedded-messages
+https://stackoverflow.com/questions/68852747/discord-py-add-multiple-values-with-for-loop-to-single-embedfield
+https://stackoverflow.com/questions/613183/how-do-i-sort-a-dictionary-by-value (WORKED!!!)
+https://towardsdatascience.com/all-pandas-json-normalize-you-should-know-for-flattening-json-13eae1dfb7dd (didn't work)
+https://www.geeksforgeeks.org/python-sort-json-by-value/ (didnt work for my json)
+https://linuxhint.com/sort-json-objects-python/
+https://www.codegrepper.com/code-examples/python/discord+py+get+user+by+id
+https://www.w3schools.com/python/python_dictionaries_add.asp
+https://stackoverflow.com/questions/52281671/how-do-i-created-nested-json-object-with-python
+https://www.programcreek.com/python/example/118733/discord.CategoryChannel
+https://stackoverflow.com/questions/47859913/how-do-i-edit-a-discord-bot-commands-description-as-shown-in-the-default-help-c
+https://stackoverflow.com/questions/48141407/how-would-i-make-my-python-3-6-1-discord-bot-create-a-new-text-channel-in-a-serv
+https://www.youtube.com/watch?v=vQw8cFfZPx0&ab_channel=Lucas
+https://www.youtube.com/watch?v=VxPndtvB7AE&ab_channel=Glowstik
+https://www.youtube.com/watch?v=arLTipYONl8
+https://www.youtube.com/watch?v=TzR8At0SFQI&ab_channel=JonahLawrence%E2%80%A2DevProTips
+https://github.com/DenverCoder1/Tutorial-Discord-Bot/tree/select-menu-help
+https://stackoverflow.com/questions/14547916/how-can-i-loop-over-entries-in-json
+https://stackoverflow.com/questions/49331096/why-does-on-message-stop-commands-from-working
+https://gist.github.com/0xicl33n/e5008c5865347aafc644a67455507314
+https://stackoverflow.com/questions/66833818/how-do-i-post-a-welcome-message-when-my-discord-bot-joins-a-server
+https://stackoverflow.com/questions/62654731/discord-py-on-guild-join-event
+https://realpython.com/how-to-make-a-discord-bot-python/
+https://realpython.com/python-return-statement/
+https://stackoverflow.com/questions/62239816/how-do-i-make-the-bot-respond-when-someone-mentions-it-discord-py
+https://stackoverflow.com/questions/68428712/cannot-import-commands-from-discord-ext
+https://betterprogramming.pub/how-to-make-discord-bot-commands-in-python-2cae39cbfd55
+https://discordpy.readthedocs.io/en/latest/quickstart.html
+https://discordpy.readthedocs.io/en/latest/
+https://discordpy.readthedocs.io/en/stable/ext/commands/
+https://www.geeksforgeeks.org/read-json-file-using-python/
+https://stackoverflow.com/questions/63316629/how-to-get-value-from-a-json-file-using-key
+https://stackoverflow.com/questions/64513680/discord-py-prefix-command
+https://stackoverflow.com/questions/51234778/what-are-the-differences-between-bot-and-client

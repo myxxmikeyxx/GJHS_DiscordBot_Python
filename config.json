@@ -1,0 +1,23 @@
+{
+    "token": "https://discord.com/developers token here",
+    "cmds": {
+        "menu": "Lists info about the bots functions ex: menu",
+        "setupchannels": "Create a channel for each game. ex: setupchannels",
+        "join": "Joins a team to the friendly. ex: join {#ofTeams}",
+        "remove": "Removes a joined team. ex: remove {#ofTeams}",
+        "list": "Lists coaches and #ofTeams joined ex: list",
+        "rules": "Provides a link to the title's rules ex: rules",
+        "setrule": "Set link to rules document. ex: setrules {link}",
+        "updateconf": "Update guilds with new \"Friendlies\" ex: updateconf {link}"
+    },
+    "Friendlies": {
+        "rocket-league-tuesday": "starter link to rules here",
+        "super-smash-wednesday": "starter link to rules here",
+        "knockout-city-thursday": "starter link to rules here"
+    },
+    "Names": {
+        "rocket-league-tuesday": "Rocket League",
+        "super-smash-wednesday": "Super Smash",
+        "knockout-city-thursday": "Knockout City"
+    }
+}
