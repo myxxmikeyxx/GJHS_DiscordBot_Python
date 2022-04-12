@@ -32,7 +32,7 @@ Setup
 -----
 
 Start the bot by going into the folder where the file is located. <br>
-If cloned github repo run this command in the folder to ignore changes made to config.json
+If cloned github repo run this command in the folder to ignore changes made to config.json <br>
 `git update-index --assume-unchanged config.json` <br>
 Start the bot. Example: `pyhton3 ./boy.py` <br>
 Create an invite like for the bot. <br>
