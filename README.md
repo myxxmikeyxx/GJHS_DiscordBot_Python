@@ -1,5 +1,4 @@
 # GJHS_DiscordBot_Python
-========================
 
 #### Table of Contents  
 [Prerequisites](#prerequisites)
