@@ -551,6 +551,10 @@ async def match(ctx):
             else:
                 print("Should not be here!")
             # true = False
+        data[str(guild.id)].update({chat_location.name : {} })
+        with open('config.json', 'w') as f: #write in the config.json "message.guild.id": "bl!"
+            json.dump(data, f, indent=4) #the indent is to make everything look a bit neater
+        print(f"all data from {chat_location.name} has been cleared")
     else:
         ctx.send(f'{ctx.message.author.mention} does not have permission for this command!')
 
