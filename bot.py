@@ -451,7 +451,7 @@ async def match(ctx):
         # create a function that does the matching and subtracting and return leftovers
         # print(teams.items())
         if len(teams) <= 1:
-            if len(teama) == 0:
+            if len(teams) == 0:
                 await chat_location.send("`No coaches joined to create a match.`")
                 return
             await chat_location.send("`Not enough coaches to create match.`")
