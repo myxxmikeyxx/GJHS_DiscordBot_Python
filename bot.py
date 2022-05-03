@@ -1,12 +1,21 @@
 from gettoken import *
 import discord
 from discord.ext import commands
+from discord.ext import tasks
 from discord.ext.commands import MissingPermissions
 # discord.ext.commands.errors.MissingPermissions
 from discord.ext.commands import CommandNotFound
 # discord.ext.commands.errors.CommandNotFound
 import logging
 from typing import Optional
+# https://stackoverflow.com/questions/441147/how-to-subtract-a-day-from-a-date
+from datetime import datetime, timedelta
+# import schedule
+# from schedule import every, repeat, run_pending
+# import time
+
+days = ["Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday", "Sunday"]
 
 # Need to do for every command
 # https://stackoverflow.com/questions/47859913/how-do-i-edit-a-discord-bot-commands-description-as-shown-in-the-default-help-c
@@ -246,12 +255,16 @@ async def join(ctx, args1: Optional[int] = None):
     # will need to use this when doing a ping and anwhere we are getting the user
     user = await bot.fetch_user(user_id)
     cat_name = "Friendlies"
+    cat_day = "Days"
     team_dict = {}
     if args1 == None:
         args1 = 1
     # You are in the right category, now need to check what chat
     chat_location = None
+    chat_day = None
     guild_id = None
+    weekday = datetime.datetime.weekday(datetime.datetime.now())
+    now = datetime.now()
     # channel = discord.utils.get(guild.text_channels, name=cat_name)
     # message.channel
     # print("\n================\n", ctx.channel, "\n================\n")
@@ -262,6 +275,23 @@ async def join(ctx, args1: Optional[int] = None):
                 # print("Match Channel Name")
                 chat_location = ctx.channel
                 break
+
+        for i in config[cat_day]:
+            if i == str(ctx.channel):
+                print("Match Day")
+                chat_day = config[cat_day][i]
+                break
+
+        # https://stackoverflow.com/questions/21674782/how-to-check-if-a-date-time-is-before-midday
+        # https://stackoverflow.com/questions/39080155/python-check-if-date-is-within-24-hours
+        # days[x.weekday()])
+        a = (map(lambda x: x.lower(), days))
+        lower_days = list(a)
+        # print(lower_days.index("wednesday"))
+        
+        if now-timedelta(hours=24) <= chat_day <= now+timedelta(hours=24):
+            print ()
+            return
         # print(chat_location)
         # print(guild.id)
         # print(type(guild.id))
@@ -280,7 +310,7 @@ async def join(ctx, args1: Optional[int] = None):
         # print(f'config-{guild_id}-{chat_location.name}\n', config[guild_id][chat_location.name])
         # print("=====================")
         # print(config[guild_id][chat_location.name])
-        with open('config.json', 'w') as f: #writes the new prefix into the .json
+        with open('config.json', 'w') as f:
             json.dump(config, f, indent=4)
         if args1 == 1:
             await chat_location.send(f'{user.mention} has joined {chat_location.name} with {args1} team.')
@@ -823,6 +853,45 @@ async def on_command_error(ctx, error):
         await ctx.send("`Command Not Found.`")
     else:
         raise error
+
+# Timed event task here till the ping command
+# https://www.reddit.com/r/Discord_Bots/comments/sr452y/discord_py_execute_command_on_a_specific_weekday/
+# https://discordpy.readthedocs.io/en/latest/ext/tasks/
+# https://apscheduler.readthedocs.io/en/3.x/
+# https://stackoverflow.com/questions/64167141/how-do-i-schedule-a-function-to-run-everyday-at-a-specific-time-in-discord-py
+
+# change the code bellow to auto run matching at about 2:35pm every day
+# make sure to only affect the channes that have that dat in the title (monday, tuseday, etc)
+
+def seconds_until(hours, minutes):
+    given_time = datetime.time(hours, minutes)
+    now = datetime.datetime.now()
+    future_exec = datetime.datetime.combine(now, given_time)
+    if (future_exec - now).days < 0:  # If we are past the execution, it will take place tomorrow
+        future_exec = datetime.datetime.combine(now + datetime.timedelta(days=1), given_time) # days always >= 0
+
+    return (future_exec - now).total_seconds()
+    
+
+async def check_time_forever(self):
+    while True:  # Or change to self.is_running or some variable to control the task
+        # 0 = monday, 1 = tuesday...
+        weekday = datetime.datetime.weekday(datetime.datetime.now())
+        await asyncio.sleep(seconds_until(11,58))  # Will stay here until your clock says 11:58
+        if weekday == 0:
+            await asyncio.sleep(seconds_until(17, 50))
+            #[Do your stuff]
+        print("See you in 24 hours from exactly now")
+        await asyncio.sleep(60)  # Practical solution to ensure that the print isn't spammed as long as it is 11:58
+
+# @tasks.loop(minutes=60.0)
+# async def mondayjob():
+# # 0 = monday, 1 = tuesday...
+# weekday = datetime.datetime.weekday(datetime.datetime.now())
+# if weekday == 0:
+#     await asyncio.sleep(seconds_until(17, 50))
+#     # [Do your stuff]
+
 
 @bot.command()
 async def ping(ctx):
