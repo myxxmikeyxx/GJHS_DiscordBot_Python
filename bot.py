@@ -10,6 +10,7 @@ import logging
 from typing import Optional
 # https://stackoverflow.com/questions/441147/how-to-subtract-a-day-from-a-date
 from datetime import datetime, timedelta
+import asyncio
 # import schedule
 # from schedule import every, repeat, run_pending
 # import time
@@ -123,7 +124,7 @@ async def on_guild_join(guild): #when the bot joins the guild
 async def on_guild_remove(guild): #when the bot is removed from the guild
     with open('config.json', 'r') as f: #read the file
         data = json.load(f)
-# might need to tweak later but should just remove the whole guild
+    # might need to tweak later but should just remove the whole guild
     data.pop(str(guild.id)) #find the guild.id that bot was removed from
     # popped = data.pop(str(guild.id)) #find the guild.id that bot was removed from
     # print(popped)
@@ -869,20 +870,61 @@ def seconds_until(hours, minutes):
     future_exec = datetime.datetime.combine(now, given_time)
     if (future_exec - now).days < 0:  # If we are past the execution, it will take place tomorrow
         future_exec = datetime.datetime.combine(now + datetime.timedelta(days=1), given_time) # days always >= 0
-
     return (future_exec - now).total_seconds()
     
 
-async def check_time_forever(self):
-    while True:  # Or change to self.is_running or some variable to control the task
-        # 0 = monday, 1 = tuesday...
-        weekday = datetime.datetime.weekday(datetime.datetime.now())
-        await asyncio.sleep(seconds_until(11,58))  # Will stay here until your clock says 11:58
-        if weekday == 0:
-            await asyncio.sleep(seconds_until(17, 50))
-            #[Do your stuff]
-        print("See you in 24 hours from exactly now")
-        await asyncio.sleep(60)  # Practical solution to ensure that the print isn't spammed as long as it is 11:58
+# async def check_time_forever(self):
+#     while True:  # Or change to self.is_running or some variable to control the task
+#         # 0 = monday, 1 = tuesday...
+#         weekday = datetime.datetime.weekday(datetime.datetime.now())
+#         hours = 12
+#         minutes = 00
+#         await asyncio.sleep(seconds_until(11,58))  # Will stay here until your clock says 11:58
+#         if weekday == 0: #Monday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("monday")
+#             #[Do your stuff]
+#         if weekday == 1: #Tuseday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("tuseday")
+#             #[Do your stuff]
+#         if weekday == 2: #Wednesday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("wednesday")
+#             #[Do your stuff]
+#         if weekday == 3: #Thursday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("thursday")
+#             #[Do your stuff]
+#         print("See you in 24 hours from exactly now")
+#         await asyncio.sleep(60)  # Practical solution to ensure that the print isn't spammed as long as it is 11:58
+
+# async def check_time_forever_2(self):
+#     while True:  # Or change to self.is_running or some variable to control the task
+#         # 0 = monday, 1 = tuesday...
+#         weekday = datetime.datetime.weekday(datetime.datetime.now())
+#         hours = 9
+#         minutes = 50
+#         await asyncio.sleep(seconds_until(hours, 49))  # Will stay here until your clock says 13:30
+#         if weekday == 1: #Tuseday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("tuseday")
+#             #[Do your stuff]
+#         if weekday == 2: #Wednesday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("wednesday")
+#             #[Do your stuff]
+#         if weekday == 3: #Thursday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("thursday")
+#             #[Do your stuff]
+#         if weekday == 4: #Friday
+#             await asyncio.sleep(seconds_until(hours, minutes))
+#             print("friday")
+#             #[Do your stuff]
+#         print("See you in 24 hours from exactly now")
+#         await asyncio.sleep(60)  # Practical solution to ensure that the print isn't spammed as long as it is 11:58
+
 
 # @tasks.loop(minutes=60.0)
 # async def mondayjob():
@@ -892,9 +934,34 @@ async def check_time_forever(self):
 #     await asyncio.sleep(seconds_until(17, 50))
 #     # [Do your stuff]
 
+# https://www.reddit.com/r/Discord_Bots/comments/g76ax6/discordpy_schedule_daily_tasks/
+@tasks.loop(minutes=5.0)
+async def task(self):
+    hour = 10
+    minutes = 30
+    if datetime.now().hour == hour:
+        print (asyncio.sleep(seconds_until(hours, minutes)))
+        await asyncio.sleep(seconds_until(hours, minutes))
+        weekday = datetime.datetime.weekday(datetime.datetime.now())
+        if weekday == 1: #Tuseday
+            print("tuseday")
+            #[Do your stuff]
+        if weekday == 2: #Wednesday
+            print("wednesday")
+            #[Do your stuff]
+        if weekday == 3: #Thursday
+            print("thursday")
+            #[Do your stuff]
+        if weekday == 4: #Friday
+            print("friday")
+            #[Do your stuff]
+            await asyncio.sleep(60)  # Practical solution to ensure that the print isn't spammed as long as it is 11:58
+
 
 @bot.command()
 async def ping(ctx):
+    print ("Recived: Ping")
+    print ("Sending: Pong")
     await ctx.send("Pong")
 
 # @bot.command()

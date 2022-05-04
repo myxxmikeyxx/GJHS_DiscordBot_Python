@@ -1,10 +1,11 @@
-from datetime import datetime, timedelta
-# https://stackoverflow.com/questions/441147/how-to-subtract-a-day-from-a-date
-d = datetime.today() - timedelta(days=days_to_subtract)
-print (d)
+# https://www.reddit.com/r/learnpython/comments/inuav9/schedule_a_task_every_4_hours_discord_py_asyncio/
+# from datetime import datetime, timedelta
+# # https://stackoverflow.com/questions/441147/how-to-subtract-a-day-from-a-date
+# d = datetime.today() - timedelta(days=days_to_subtract)
+# print (d)
 
-# https://www.codegrepper.com/code-examples/python/how+to+get+day+before+python+date
-yesterday = datetime.today() - timedelta(days = 1, hours = 5 )
+# # https://www.codegrepper.com/code-examples/python/how+to+get+day+before+python+date
+# yesterday = datetime.today() - timedelta(days = 1, hours = 5 )
 
 
 # # https://stackoverflow.com/questions/64167141/how-do-i-schedule-a-function-to-run-everyday-at-a-specific-time-in-discord-py
@@ -38,19 +39,19 @@ yesterday = datetime.today() - timedelta(days = 1, hours = 5 )
 
 
 # https://www.reddit.com/r/Discord_Bots/comments/sr452y/discord_py_execute_command_on_a_specific_weekday/
-@tasks.loop(minutes=60.0)
-    async def mondayjob():
-    # 0 = monday, 1 = tuesday...
-    weekday = datetime.datetime.weekday(datetime.datetime.now())
-    if weekday == 0:
-        await asyncio.sleep(seconds_until(12, 00))
-        [Do your stuff]
+# @tasks.loop(minutes=60.0)
+#     async def mondayjob():
+#     # 0 = monday, 1 = tuesday...
+#     weekday = datetime.datetime.weekday(datetime.datetime.now())
+#     if weekday == 0:
+#         await asyncio.sleep(seconds_until(12, 00))
+#         [Do your stuff]
 
-# Calculates the time in seconds until hh:mm is reached
-def seconds_until(hours, minutes):
-    given_time = datetime.time(hours, minutes)
-    now = datetime.datetime.now()
-    future_exec = datetime.datetime.combine(now, given_time)
-    if (future_exec - now).days < 0: # If we are past the execution, it will take place tomorrow
-        future_exec = datetime.datetime.combine(now + datetime.timedelta(days=1), given_time) # days always >= 0
-    return (future_exec - now).total_seconds()
+# # Calculates the time in seconds until hh:mm is reached
+# def seconds_until(hours, minutes):
+#     given_time = datetime.time(hours, minutes)
+#     now = datetime.datetime.now()
+#     future_exec = datetime.datetime.combine(now, given_time)
+#     if (future_exec - now).days < 0: # If we are past the execution, it will take place tomorrow
+#         future_exec = datetime.datetime.combine(now + datetime.timedelta(days=1), given_time) # days always >= 0
+#     return (future_exec - now).total_seconds()
