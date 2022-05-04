@@ -19,5 +19,10 @@
         "rocket-league-tuesday": "Rocket League",
         "super-smash-wednesday": "Super Smash",
         "knockout-city-thursday": "Knockout City"
+    },
+    "Days": {
+        "rocket-league-tuesday": "Tuseday",
+        "super-smash-wednesday": "Wednesday",
+        "knockout-city-thursday": "Thursday"
     }
 }
