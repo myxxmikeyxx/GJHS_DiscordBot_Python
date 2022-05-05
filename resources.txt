@@ -37,3 +37,8 @@ https://www.geeksforgeeks.org/read-json-file-using-python/
 https://stackoverflow.com/questions/63316629/how-to-get-value-from-a-json-file-using-key
 https://stackoverflow.com/questions/64513680/discord-py-prefix-command
 https://stackoverflow.com/questions/51234778/what-are-the-differences-between-bot-and-client
+
+
+https://stackoverflow.com/questions/64888549/checking-if-there-is-a-channel-containing-a-word
+https://stackoverflow.com/questions/66455466/what-is-the-easiest-way-to-get-list-of-all-guild-ids-discord-py
+
