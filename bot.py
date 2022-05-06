@@ -780,7 +780,8 @@ def seconds_until(hours, minutes):
 
 @tasks.loop(minutes=60.0)
 async def task_match_coaches():
-    hour = 2
+    # use miltary time
+    hour = 13
     minutes = 30
     if datetime.now().hour == hour:
         print (seconds_until(hour, minutes))
