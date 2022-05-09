@@ -457,14 +457,13 @@ async def match(ctx):
     else:
         ctx.send(f'{ctx.message.author.mention} does not have permission for this command!')
 
-
 @commands.command()
 async def bot_match(day):
     for guild in bot.guilds:
         for channel in guild.channels:
             if str(channel.type) == 'text':
                 if days[day].lower() in channel.name.lower():
-                    print ("Found channel")
+                    print ("Found channel", channel.name.lower())
                     chat_location = channel
                     teams = {}
                     role_name = "Coaches"
@@ -663,7 +662,10 @@ async def on_ready():
     print(
         f'{bot.user} is online.\n'
     )
+    print("Starting Task: taask_match_coaches.start()")
     task_match_coaches.start()
+    print("Starting Task: task_announce_open.start()")
+    task_announce_open.start()
     
 @bot.command(aliases=["listguilds","guildslist","showallguilds"])
 @commands.has_permissions(administrator=True) #ensure that only administrators can use this command
@@ -773,15 +775,10 @@ def seconds_until(hours, minutes):
         future_exec = datetime.combine(now + timedelta(days=1), given_time) 
     return (future_exec - now).total_seconds()
     
-
-
-
-
-
 @tasks.loop(minutes=60.0)
 async def task_match_coaches():
     # use miltary time
-    hour = 13
+    hour = 14
     minutes = 30
     if datetime.now().hour == hour:
         print (seconds_until(hour, minutes))
@@ -807,7 +804,63 @@ async def task_match_coaches():
             print("friday")
             await bot_match(weekday)
             #[Do your stuff]
-        await asyncio.sleep(60)  
+        await asyncio.sleep(60)
+
+@commands.command()
+async def anounceOpen(day):
+     for guild in bot.guilds:
+        for channel in guild.channels:
+            if str(channel.type) == 'text':
+                if day == 6: day = (-1)
+                if days[day+1].lower() in channel.name.lower():
+                    role_name = "Coaches"
+                    coaches_role = discord.utils.get(guild.roles,name=role_name)
+                    await channel.send(f'{coaches_role.mention}\n'
+                                        "Teams are now able to join ", 
+                                        channel.name())
+
+@tasks.loop(minutes=60.0)
+async def task_announce_open():
+    # use miltary time
+    hour = 12
+    minutes = 30
+    if datetime.now().hour == hour:
+        print (seconds_until(hour, minutes))
+        await asyncio.sleep(seconds_until(hour, minutes))
+        weekday = datetime.weekday(datetime.now())
+        if weekday == 0: #Monday
+            print("Monday")
+            await anounceOpen(weekday)
+            #[Do your stuff]
+        if weekday == 1: #Tuseday
+            print("tuseday")
+            await anounceOpen(weekday)
+            #[Do your stuff]
+        if weekday == 2: #Wednesday
+            print("wednesday")
+            await anounceOpen(weekday)
+            #[Do your stuff]
+        if weekday == 3: #Thursday
+            print("thursday")
+            await anounceOpen(weekday)
+            #[Do your stuff]
+        if weekday == 4: #Friday
+            print("friday")
+            await anounceOpen(weekday)
+            #[Do your stuff]
+        await asyncio.sleep(60)
+
+# https://stackoverflow.com/questions/43465082/python-discord-py-delete-all-messages-in-a-text-channel
+@bot.command(pass_context = True, name='clear', help='this command will clear msgs')
+@commands.has_permissions(administrator=True) 
+async def clear(ctx, number: Optional[int] = 5):
+    if ctx.message.author.guild_permissions.administrator:
+        if number >= 100: number = 99
+        try:
+            await ctx.channel.purge(limit=number)
+        except:
+            print("An exception occurred while deleting msgs.\n")
+
 
 
 @bot.command()
