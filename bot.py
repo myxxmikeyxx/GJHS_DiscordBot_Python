@@ -207,10 +207,10 @@ async def join(ctx, args1: Optional[int] = None):
                         print("-", day)
                         if days[weekday + 1].lower() in chat_location.name.lower():
                             print("Is one day early, checking is its after 12:00")
-                            if datetime.now().hour >= time(12):
+                            if time(datetime.now().hour) >= time(12):
                                 print("It's noon or later.")
                                 # it is after or is noon
-                                # check time if it is before noon then do not let them join (return)
+                                continue
                             else:
                                 await chat_location.send(f'{user.mention} it is too early to join {chat_location.name}.\nTry again later.')
                                 return
@@ -405,7 +405,7 @@ async def match(ctx):
                     msgValue = teams[msgKey]
                     await chat_location.send('!!Attention!!\n'
                                             f'{coaches_role.mention}\n'
-                                            f'{coach1.mention} needs {msgValue} of matche(s).')
+                                            f'{coach1.mention} needs {msgValue} matche(s).')
                     true = False
                     break
                 elif  len(teams) == 0:
@@ -438,7 +438,7 @@ async def match(ctx):
                     coach2 = await bot.fetch_user(int(firstkey))
                     await chat_location.send('!!Attention!!\n'
                                             f'{coaches_role.mention}\n'
-                                            f'{coach2.mention} needs {secondval} of matche(s).')
+                                            f'{coach2.mention} needs {temp_secondval} matche(s).')
                     true = False
                     break
                 print("had reminder teams in json")
@@ -817,7 +817,7 @@ async def anounceOpen(day):
                     coaches_role = discord.utils.get(guild.roles,name=role_name)
                     await channel.send(f'{coaches_role.mention}\n'
                                         "Teams are now able to join ", 
-                                        channel.name())
+                                        str(channel.name()))
 
 @tasks.loop(minutes=60.0)
 async def task_announce_open():
