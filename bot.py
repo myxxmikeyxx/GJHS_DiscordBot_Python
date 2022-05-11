@@ -540,7 +540,7 @@ async def bot_match(day):
                                 coach2 = await bot.fetch_user(int(firstkey))
                                 await chat_location.send('!!Attention!!\n'
                                                         f'{coaches_role.mention}\n'
-                                                        f'{coach2.mention} needs {secondval} of matche(s).')
+                                                        f'{coach2.mention} needs {temp_secondval} of matche(s).')
                                 true = False
                                 break
                             print("had reminder teams in json")
