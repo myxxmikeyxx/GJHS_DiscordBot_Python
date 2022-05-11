@@ -816,8 +816,7 @@ async def anounceOpen(day):
                     role_name = "Coaches"
                     coaches_role = discord.utils.get(guild.roles,name=role_name)
                     await channel.send(f'{coaches_role.mention}\n'
-                                        "Teams are now able to join ", 
-                                        str(channel.name()))
+                                        f'Teams are now able to join {str(channel.name())}')
 
 @tasks.loop(minutes=60.0)
 async def task_announce_open():
