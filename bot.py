@@ -13,7 +13,8 @@ days = ["Monday", "Tuesday", "Wednesday",
         "Thursday", "Friday", "Saturday", "Sunday"]
 
 
-
+# Change the file format and name to match this
+# https://github.com/Delgan/loguru/issues/178
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
 handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
@@ -781,26 +782,32 @@ async def task_match_coaches():
     hour = 14
     minutes = 30
     if datetime.now().hour == hour:
+        logger.info(seconds_until(hour, minutes))
         print (seconds_until(hour, minutes))
         await asyncio.sleep(seconds_until(hour, minutes))
         weekday = datetime.weekday(datetime.now())
         if weekday == 0: #Monday
+            logger.info(weekday)
             print("Monday")
             await bot_match(weekday)
             #[Do your stuff]
         if weekday == 1: #Tuseday
+            logger.info(weekday)
             print("tuseday")
             await bot_match(weekday)
             #[Do your stuff]
         if weekday == 2: #Wednesday
+            logger.info(weekday)
             print("wednesday")
             await bot_match(weekday)
             #[Do your stuff]
         if weekday == 3: #Thursday
+            logger.info(weekday)
             print("thursday")
             await bot_match(weekday)
             #[Do your stuff]
         if weekday == 4: #Friday
+            logger.info(weekday)
             print("friday")
             await bot_match(weekday)
             #[Do your stuff]
@@ -824,26 +831,32 @@ async def task_announce_open():
     hour = 12
     minutes = 30
     if datetime.now().hour == hour:
+        logger.info(seconds_until(hour, minutes))
         print (seconds_until(hour, minutes))
         await asyncio.sleep(seconds_until(hour, minutes))
         weekday = datetime.weekday(datetime.now())
         if weekday == 0: #Monday
+            logger.info(weekday)
             print("Monday")
             await anounceOpen(weekday)
             #[Do your stuff]
         if weekday == 1: #Tuseday
+            logger.info(weekday)
             print("tuseday")
             await anounceOpen(weekday)
             #[Do your stuff]
         if weekday == 2: #Wednesday
+            logger.info(weekday)
             print("wednesday")
             await anounceOpen(weekday)
             #[Do your stuff]
         if weekday == 3: #Thursday
+            logger.info(weekday)
             print("thursday")
             await anounceOpen(weekday)
             #[Do your stuff]
         if weekday == 4: #Friday
+            logger.info(weekday)
             print("friday")
             await anounceOpen(weekday)
             #[Do your stuff]
