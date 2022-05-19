@@ -662,7 +662,7 @@ async def on_ready():
     print(
         f'{bot.user} is online.\n'
     )
-    print("Starting Task: taask_match_coaches.start()")
+    print("Starting Task: task_match_coaches.start()")
     task_match_coaches.start()
     print("Starting Task: task_announce_open.start()")
     task_announce_open.start()
@@ -816,7 +816,7 @@ async def anounceOpen(day):
                     role_name = "Coaches"
                     coaches_role = discord.utils.get(guild.roles,name=role_name)
                     await channel.send(f'{coaches_role.mention}\n'
-                                        f'Teams are now able to join {str(channel.name())}')
+                                        f'Teams are now able to join {channel.name}')
 
 @tasks.loop(minutes=60.0)
 async def task_announce_open():
@@ -860,14 +860,11 @@ async def clear(ctx, number: Optional[int] = 5):
         except:
             print("An exception occurred while deleting msgs.\n")
 
-
-
 @bot.command()
 async def ping(ctx):
     print ("Recived: Ping")
     print ("Sending: Pong")
     await ctx.send("Pong")
-
 
 #Use The Token From Above to connect
 bot.run(TOKEN)
